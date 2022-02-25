@@ -9,8 +9,14 @@ namespace PokemonTests.Domain
             PokemonName pokemonName = PokemonNameMother.Random();
             PokemonHeight pokemonHeight = PokemonHeightMother.Random();
             PokemonWeight pokemonWeight = PokemonWeightMother.Random();
+            PokemonFavoriteCounter pokemonFavoriteCounter = PokemonFavoriteCounterMother.Random();
 
-            return Pokemon.Pokemon.Domain.Pokemon.Create(pokemonId, pokemonName, pokemonHeight, pokemonWeight); 
+            return Pokemon.Pokemon.Domain.Pokemon.Create(
+                pokemonId,
+                pokemonName,
+                pokemonHeight,
+                pokemonWeight,
+                pokemonFavoriteCounter); 
         }
     }
 }

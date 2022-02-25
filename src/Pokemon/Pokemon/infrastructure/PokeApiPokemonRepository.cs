@@ -11,12 +11,17 @@ namespace Pokemon.Pokemon.Infrastructure
     public class PokeApiPokemonRepository : IPokemonRepository
     {
         private readonly HttpClient _pokemonClient;
+        private readonly PokemonAdapter _pokemonAdapter;
         private const string PokemonUrl = "https://pokeapi.co/api/v2/pokemon/";
 
-        public PokeApiPokemonRepository(HttpClient httpClient)
+        public PokeApiPokemonRepository(
+            HttpClient httpClient,
+            PokemonAdapter pokemonAdapter
+        )
         {
             _pokemonClient = httpClient;
             _pokemonClient.BaseAddress = new Uri(PokemonUrl);
+            _pokemonAdapter = pokemonAdapter;
         }
 
         public bool Exists(PokemonId pokemonId)
@@ -30,7 +35,7 @@ namespace Pokemon.Pokemon.Infrastructure
         {
             var pokemonDto = FindByPokemonIdAsync(pokemonId.Value).Result;
 
-            Domain.Pokemon pokemon = HttpAdapter.PokeApiPokemonDtoToPokemon(pokemonDto);
+            Domain.Pokemon pokemon = _pokemonAdapter.PokeApiPokemonDtoToPokemon(pokemonDto);
             return pokemon;
         }
 

@@ -7,5 +7,6 @@ namespace Pokemon.Pokemon.Infrastructure
         public string Name { get; set; }
         public int Height { get; set; }
         public int Weight { get; set; }
+        public int FavoriteCounter { get; set; }
     }
 }

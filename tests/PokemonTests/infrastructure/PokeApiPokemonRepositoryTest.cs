@@ -20,9 +20,13 @@ namespace PokemonTests.Infrastructure
             var response = JsonSerializer.Serialize(pokeApiPokemonDto);
             mockHttp.When($"{pokemonUrl}/{pokeApiPokemonDto.Id}").Respond("application/json", response);
             var httpClient = new HttpClient(mockHttp);
-            var pokeApiPokemonRepository = new PokeApiPokemonRepository(httpClient);
+            var memoryPokemonRepository = new MemoryPokemonRepository();
+            var pokemonAdapter = new PokemonAdapter(memoryPokemonRepository);
+            var pokeApiPokemonRepository = new PokeApiPokemonRepository(httpClient, pokemonAdapter);
+            
             //When
             var pokemon = pokeApiPokemonRepository.Find(new PokemonId(pokeApiPokemonDto.Id));
+            
             //Then
             Assert.Equal(pokeApiPokemonDto.Id, pokemon.PokemonId.Value);
         }
@@ -36,9 +40,13 @@ namespace PokemonTests.Infrastructure
             var response = JsonSerializer.Serialize(pokeApiPokemonDto);
             mockHttp.When($"{pokemonUrl}/{pokeApiPokemonDto.Id}").Respond("application/json", response);
             var httpClient = new HttpClient(mockHttp);
-            var pokeApiPokemonRepository = new PokeApiPokemonRepository(httpClient);
+            var memoryPokemonRepository = new MemoryPokemonRepository();
+            var pokemonAdapter = new PokemonAdapter(memoryPokemonRepository);
+            var pokeApiPokemonRepository = new PokeApiPokemonRepository(httpClient, pokemonAdapter);
+            
             //When
             var exists = pokeApiPokemonRepository.Exists(new PokemonId(pokeApiPokemonDto.Id));
+            
             //Then
             Assert.True(exists);
         }
