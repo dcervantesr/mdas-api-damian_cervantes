@@ -21,5 +21,15 @@
         public UserId Id => _userId;
         public UserName UserName => _userName;
         public PokemonFavoritesCollection PokemonFavorites => _pokemonFavorites;
+
+        public void AddPokemonFavorite(PokemonFavorite favorite) {
+            GuardAgainstPokemonFavoriteAlreadyExist(favorite);
+            _pokemonFavorites.Add(favorite);
+        }
+
+        private void GuardAgainstPokemonFavoriteAlreadyExist(PokemonFavorite favorite) {
+            if (_pokemonFavorites.Any(p => p.PokemonId == favorite.PokemonId))
+                throw new PokemonFavoriteAlreadyExistException();
+        }
     }
 }

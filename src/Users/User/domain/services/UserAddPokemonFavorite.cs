@@ -11,14 +11,16 @@
 
         public virtual void Execute(UserId userId, PokemonFavorite pokemonFavorite)
         {
+            guardAgainstUserDoesNotExist(userId);
+            var user = _userRepository.Find(userId);
+            user.AddPokemonFavorite(pokemonFavorite);
+            _userRepository.Save(user);
+        }
+
+        private void guardAgainstUserDoesNotExist(UserId userId)
+        {
             if (!_userRepository.Exists(userId))
                 throw new UserDoesNotExistException();
-
-            var user = _userRepository.Find(userId);
-
-            user.PokemonFavorites.AddPokemonFavorite(pokemonFavorite);
-
-            _userRepository.Save(user);
         }
     }
 }
