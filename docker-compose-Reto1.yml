@@ -1,0 +1,19 @@
+version: '3.6'
+
+services:
+
+ pokemon:
+    image: pokemon
+    container_name: pokemon
+    build:
+      context: .
+      dockerfile: deploy/Dockerfile-Reto1
+    ports:
+      - "3080:80" 
+      - "3443:443"
+    networks:
+      - pokemonnet
+
+networks:
+    pokemonnet:
+        driver: bridge

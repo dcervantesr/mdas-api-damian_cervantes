@@ -1,0 +1,19 @@
+version: '3.6'
+
+services:
+
+ users:
+    image: userfavorite
+    container_name: userfavorite
+    build:
+      context: .
+      dockerfile: deploy/Dockerfile-Reto2
+    ports:
+      - "4080:80" 
+      - "4443:443"
+    networks:
+      - userfavoritenet
+
+networks:
+    userfavoritenet:
+        driver: bridge

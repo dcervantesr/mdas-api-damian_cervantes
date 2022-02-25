@@ -1,0 +1,24 @@
+FROM mcr.microsoft.com/dotnet/sdk:6.0
+WORKDIR /App
+
+# Copy csproj and restore as distinct layers
+COPY ["src/Pokemon/Pokemon.csproj", "src/Pokemon/"]
+COPY ["src/Users/Users.csproj", "src/Users/"]
+COPY ["tests/UsersTest/UsersTest.csproj", "tests/UsersTest/"]
+COPY ["tests/PokemonTests/PokemonTests.csproj", "tests/PokemonTests/"]
+COPY ["tests/TypeTests/TypeTests.csproj", "tests/TypeTests/"]
+
+RUN dotnet restore "src/Pokemon/Pokemon.csproj"
+RUN dotnet restore "src/Users/Users.csproj"
+RUN dotnet restore "tests/UsersTest/UsersTest.csproj"
+RUN dotnet restore "tests/PokemonTests/PokemonTests.csproj"
+RUN dotnet restore "tests/TypeTests/TypeTests.csproj"
+
+# Copy everything else and build
+COPY . .
+RUN dotnet publish ./tests/UsersTest/UsersTest.csproj -c Release -o out
+RUN dotnet publish ./tests/PokemonTests/PokemonTests.csproj -c Release -o out
+RUN dotnet publish ./tests/TypeTests/TypeTests.csproj -c Release -o out
+
+# run tests on docker run
+ENTRYPOINT ["dotnet", "test"]

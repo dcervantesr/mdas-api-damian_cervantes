@@ -1,0 +1,43 @@
+version: '3.6'
+
+services:
+
+ epokemon.pokemons:
+    image: mdas-api-g2.pokemons
+    container_name: pokemon
+    build:
+      context: .
+      dockerfile: deploy/Dockerfile-Reto1
+    ports:
+      - "3080:80" 
+      - "3443:443"
+    networks:
+      - epokemonnet
+
+ epokemon.users:
+    image: mdas-api-g2.userfavorites
+    container_name: userfavorite
+    build:
+      context: .
+      dockerfile: deploy/Dockerfile-Reto2
+    ports:
+      - "4080:80" 
+      - "4443:443"
+    networks:
+      - epokemonnet
+
+ epokemon.tests:
+    image: mdas-api-g2.tests
+    container_name: test
+    build:
+      context: .
+      dockerfile: deploy/Dockerfile-Reto3-Test
+    ports:
+      - "5080:80" 
+      - "5443:443"
+    networks:
+      - epokemonnet      
+
+networks:
+    epokemonnet:
+        driver: bridge

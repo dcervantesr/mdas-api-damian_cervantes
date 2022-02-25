@@ -1,0 +1,158 @@
+{
+	"info": {
+		"_postman_id": "349190f8-eceb-48ea-9980-8203358076f2",
+		"name": "mdas-api-g2.Challenge3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users.Create User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"raul\",\n  \"id\": \"cd7ddb3e-5cac-4333-9bce-241041b66c62\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4080/api/v1/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4080",
+					"path": [
+						"api",
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Users.Add Pokemon Favorite",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"userId\": \"cd7ddb3e-5cac-4333-9bce-241041b66c62\",\n  \"pokemonId\": \"1dac9bf3-1ffb-4335-b998-434823381285\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4080/api/v1/users/pokemonfavorite",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4080",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"pokemonfavorite"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Types.Get Type",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3080/api/v1/type/charizard",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3080",
+					"path": [
+						"api",
+						"v1",
+						"type",
+						"charizard"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Types.Get Type - Pokemon Not Found",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3080/api/v1/type/xxx",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3080",
+					"path": [
+						"api",
+						"v1",
+						"type",
+						"xxx"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pokemons.Get Pokemon",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3080/api/v1/pokemon/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3080",
+					"path": [
+						"api",
+						"v1",
+						"pokemon",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pokemons.Get Pokemon - Pokemon Not Found",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3080/api/v1/pokemon/9999",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3080",
+					"path": [
+						"api",
+						"v1",
+						"pokemon",
+						"9999"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

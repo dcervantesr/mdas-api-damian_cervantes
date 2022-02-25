@@ -1,0 +1,45 @@
+{
+	"info": {
+		"_postman_id": "f5e85fab-0d8e-4ff7-8190-6bcf954cd4a7",
+		"name": "Challenge2-User",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"raul\",\n  \"id\": \"cd7ddb3e-5cac-4333-9bce-241041b66c62\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:4080/api/v1/users"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Pokemon Favorite",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"userId\": \"cd7ddb3e-5cac-4333-9bce-241041b66c62\",\n  \"pokemonId\": \"1dac9bf3-1ffb-4335-b998-434823381285\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:4080/api/v1/users/pokemonfavorite"
+			},
+			"response": []
+		}
+	]
+}

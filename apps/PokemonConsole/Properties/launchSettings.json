@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "PokemonConsole": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
