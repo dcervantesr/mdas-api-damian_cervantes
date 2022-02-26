@@ -14,13 +14,12 @@ namespace UsersTest.Application
         public void Should_Add_A_PokemonFavorite()
         {
             //Given
-            var userGuid = GuidCreator.Execute();
-            var userId = UserIdMother.Random(userGuid);
-            var user = UserMother.Random(userId, It.IsAny<UserName>());
+            var user = UserMother.Random(UserIdMother.Random(), UserNameMother.Random());
             var pokemonId = PokemonIdMother.Random();
             var userFinder = new Mock<UserFinder>(It.IsAny<IUserRepository>());
-            userFinder.Setup(x => x.Execute(userId)).Returns(user);
+            userFinder.Setup(x => x.Execute(It.IsAny<UserId>())).Returns(user);
             var userSaver = new Mock<UserSaver>(It.IsAny<IUserRepository>());
+            userSaver.Setup(x => x.Execute(It.IsAny<User>()));
             var eventPublisher = new Mock<EventPublisher>();
             var addPokemonFavoriteUseCase = new AddPokemonFavoriteUseCase(
                 userSaver.Object,
@@ -32,7 +31,7 @@ namespace UsersTest.Application
             addPokemonFavoriteUseCase.Execute(user.Id.Value, pokemonId.Value);
 
             //Then
-            userSaver.Verify(x => x.Execute(user));
+            userSaver.Verify(v => v.Execute(It.IsAny<User>()));
         }
     }
 }

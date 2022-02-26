@@ -6,15 +6,13 @@ namespace UsersTest.Domain
 {
     public class UserCreatorShould
     {
-        private UserCreator? _userCreator;
-
         [Fact]
         public void Create_A_User()
         {
             //Given
             var userRepository = new Mock<IUserRepository>();
             userRepository.Setup(_ => _.Exists(It.IsAny<UserId>())).Returns(false);
-            _userCreator = new UserCreator(userRepository.Object);
+            var _userCreator = new UserCreator(userRepository.Object);
 
             var userId = UserIdMother.Random();
             var userName = UserNameMother.Random();
@@ -32,7 +30,7 @@ namespace UsersTest.Domain
             //Given
             var userRepository = new Mock<IUserRepository>();
             userRepository.Setup(_ => _.Exists(It.IsAny<UserId>())).Returns(true);
-            _userCreator = new UserCreator(userRepository.Object);
+            var _userCreator = new UserCreator(userRepository.Object);
 
             var userId = UserIdMother.Random();
             var userName = UserNameMother.Random();

@@ -19,7 +19,7 @@ namespace UsersTest.Domain
             var result = _userFinder.Execute(user.Id);
 
             //Then
-            userRepository.Verify(v => v.Save(It.IsAny<User>()));
+            userRepository.Verify(v => v.Find(It.IsAny<UserId>()));
             Assert.Equal(user.Id.Value, result.Id.Value);
         }
 
