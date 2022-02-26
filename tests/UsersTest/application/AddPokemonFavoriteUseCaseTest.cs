@@ -19,7 +19,8 @@ namespace UsersTest.Application
             var pokemonId = PokemonIdMother.Random();
             var userAddPokemonFavorite = new Mock<UserAddPokemonFavorite>(It.IsAny<IUserRepository>());
             userAddPokemonFavorite.Setup(_ => _.Execute(It.IsAny<UserId>(), It.IsAny<PokemonFavorite>()));
-            var addPokemonFavoriteUseCase = new AddPokemonFavoriteUseCase(userAddPokemonFavorite.Object);
+            var pokemonFavoritePublisher = new Mock<PokemonFavoritePublisher>();
+            var addPokemonFavoriteUseCase = new AddPokemonFavoriteUseCase(userAddPokemonFavorite.Object, pokemonFavoritePublisher.Object);
 
             //When
             addPokemonFavoriteUseCase.Execute(user.Id.Value, pokemonId.Value);

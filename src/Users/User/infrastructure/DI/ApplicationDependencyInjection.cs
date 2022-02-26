@@ -9,6 +9,7 @@ public static class ApplicationDependencyInjection
     {
         services.AddTransient<CreateUserUseCase>();
         services.AddTransient<AddPokemonFavoriteUseCase>();
+        services.AddTransient<PokemonFavoritePublisher>();
         return services;
     }
 }
