@@ -13,15 +13,18 @@ namespace Pokemon.Pokemon.Infrastructure
         private readonly HttpClient _pokemonClient;
         private readonly PokemonAdapter _pokemonAdapter;
         private const string PokemonUrl = "https://pokeapi.co/api/v2/pokemon/";
+        private readonly MemoryPokemonRepository _memoryPokemonRepository;
 
         public PokeApiPokemonRepository(
             HttpClient httpClient,
-            PokemonAdapter pokemonAdapter
+            PokemonAdapter pokemonAdapter,
+            MemoryPokemonRepository memoryPokemonRepository
         )
         {
             _pokemonClient = httpClient;
             _pokemonClient.BaseAddress = new Uri(PokemonUrl);
             _pokemonAdapter = pokemonAdapter;
+            _memoryPokemonRepository = memoryPokemonRepository;
         }
 
         public bool Exists(PokemonId pokemonId)
@@ -39,7 +42,10 @@ namespace Pokemon.Pokemon.Infrastructure
             return pokemon;
         }
 
-        #region Private Methods
+        public void Save(Domain.Pokemon pokemon)
+        {
+            _memoryPokemonRepository.Save(pokemon.PokemonId.Value, pokemon.PokemonFavoriteCounter.Value);
+        }
 
         private async Task<PokeApiPokemonDto> FindByPokemonIdAsync(int pokemonId)
         {
@@ -82,9 +88,5 @@ namespace Pokemon.Pokemon.Infrastructure
                 }
             }
         }
-
-
-        #endregion
-
     }
 }

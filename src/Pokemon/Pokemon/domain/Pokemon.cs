@@ -38,6 +38,8 @@
         public PokemonName PokemonName => _pokemonName;
         public PokemonHeight PokemonHeight => _pokemonHeight;
         public PokemonWeight PokemonWeight => _pokemonWeight;
-        public void IncrementFavoriteCounter(PokemonFavoriteCounter pokemonFavoriteCounter) => _pokemonFavoriteCounter = pokemonFavoriteCounter;
+        public PokemonFavoriteCounter PokemonFavoriteCounter => _pokemonFavoriteCounter;
+        public void IncrementFavoriteCounter() => 
+            _pokemonFavoriteCounter = new PokemonFavoriteCounter(_pokemonFavoriteCounter.Value + 1);
     }
 }
