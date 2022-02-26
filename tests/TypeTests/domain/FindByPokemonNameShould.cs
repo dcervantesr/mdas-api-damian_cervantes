@@ -13,11 +13,11 @@ namespace TypeTest.Domain
             //Given
             var typeRepository = new Mock<ITypeRepository>();
             var type = TypeMother.Random();
-            typeRepository.Setup(_ => _.FindByPokemonName(It.IsAny<PokemonName>())).Returns(new List<Type>() { type });
+            typeRepository.Setup(_ => _.FindByPokemonName(It.IsAny<string>())).Returns(new List<Type>() { type });
             var _findByPokemonName = new FindByPokemonName(typeRepository.Object);
 
             //When 
-            var result = _findByPokemonName.Execute(PokemonNameMother.Random());
+            var result = _findByPokemonName.Execute(Faker.Name.First());
 
             //then
             Assert.Equal(type.Name, result[0].Name);
@@ -28,11 +28,11 @@ namespace TypeTest.Domain
         {
             //Given
             var typeRepository = new Mock<ITypeRepository>();
-            typeRepository.Setup(_ => _.FindByPokemonName(It.IsAny<PokemonName>())).Returns(new List<Type>());
+            typeRepository.Setup(_ => _.FindByPokemonName(It.IsAny<string>())).Returns(new List<Type>());
             var _findByPokemonName = new FindByPokemonName(typeRepository.Object);
 
             //When - Then
-            Assert.Throws<PokemonNotFound>(() => _findByPokemonName.Execute(PokemonNameMother.Random()));
+            Assert.Throws<PokemonNotFound>(() => _findByPokemonName.Execute(Faker.Name.First()));
         }
     }
 }

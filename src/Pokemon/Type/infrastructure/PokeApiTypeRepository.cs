@@ -10,9 +10,9 @@ namespace Pokemon.Type.Infrastructure
         {
             _pokeApiHttpClient = pokeApiHttpClient;
         }
-        public List<Domain.Type> FindByPokemonName(PokemonName pokemonName)
+        public List<Domain.Type> FindByPokemonName(string pokemonName)
         {
-            var pokemon = _pokeApiHttpClient.FindByPokemonNameAsync(pokemonName.Value).Result;
+            var pokemon = _pokeApiHttpClient.FindByPokemonNameAsync(pokemonName).Result;
 
             List<Domain.Type> types = HttpAdapter.PokeApiTypeDtoListToTypesList(pokemon);
             return types;

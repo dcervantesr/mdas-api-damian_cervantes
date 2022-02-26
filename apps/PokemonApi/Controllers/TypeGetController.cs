@@ -17,16 +17,16 @@ namespace PokemonApi.Controllers
         }
 
         [HttpGet("type/{name}")]
-        public IActionResult Get(GetTypesByPokemonNameQuery getTypesByPokemonNameQuery)
+        public IActionResult Get(string pokemonName)
         {
-            if (getTypesByPokemonNameQuery.Name == string.Empty)
+            if (string.IsNullOrEmpty(pokemonName))
             {
                 return BadRequest("Name is required");
             }
             try
             {
                 List<Pokemon.Type.Domain.Type> result =
-                    _getTypesByPokemonNameUseCase.Execute(getTypesByPokemonNameQuery);
+                    _getTypesByPokemonNameUseCase.Execute(pokemonName);
 
                 return Ok(result);
             }

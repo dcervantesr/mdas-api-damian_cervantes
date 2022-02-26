@@ -27,7 +27,7 @@ namespace PokemonConsole
                         Console.WriteLine("Name is required");
                     }
                 } while (pokemonName == string.Empty);
-                List<Pokemon.Type.Domain.Type> result = _getTypesByPokemonNameUseCase.Execute(new GetTypesByPokemonNameQuery() { Name = pokemonName });
+                List<Pokemon.Type.Domain.Type> result = _getTypesByPokemonNameUseCase.Execute(pokemonName);
                 string resultString = "";
                 foreach (var type in result)
                 {

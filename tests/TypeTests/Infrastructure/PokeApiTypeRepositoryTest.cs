@@ -1,5 +1,4 @@
-﻿using Pokemon.Type.Domain;
-using Pokemon.Type.Infrastructure;
+﻿using Pokemon.Type.Infrastructure;
 using RichardSzalay.MockHttp;
 using System.Linq;
 using System.Net.Http;
@@ -25,7 +24,7 @@ namespace TypeTests.Infrastructure
             var pokeApiTypeRepository = new PokeApiTypeRepository(pokeApiHttpClient);
 
             //When
-            var types = pokeApiTypeRepository.FindByPokemonName(new PokemonName(pokeApiPokemonDto.Name));
+            var types = pokeApiTypeRepository.FindByPokemonName(pokeApiPokemonDto.Name);
 
             //Then
             Assert.Equal(pokeApiPokemonDto.Types.Count(), types.Count());
