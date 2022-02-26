@@ -14,7 +14,7 @@ namespace Pokemon.Type.Application
 
         public List<Domain.Type> Execute(GetTypesByPokemonNameQuery getTypesByPokemonNameQuery)
         {
-            return _findByPokemonName.Execute(getTypesByPokemonNameQuery.Name());
+            return _findByPokemonName.Execute(new PokemonName(getTypesByPokemonNameQuery.Name));
         }
     }
 }
