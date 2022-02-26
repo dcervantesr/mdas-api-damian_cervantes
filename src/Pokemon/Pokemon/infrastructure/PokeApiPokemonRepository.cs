@@ -4,7 +4,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
-using PokemonNotFoundException = Pokemon.Pokemon.Domain.PokemonNotFoundException;
+using PokemonNotFound = Pokemon.Pokemon.Domain.PokemonNotFound;
 
 namespace Pokemon.Pokemon.Infrastructure
 {
@@ -55,9 +55,9 @@ namespace Pokemon.Pokemon.Infrastructure
                 switch (e.StatusCode)
                 {
                     case HttpStatusCode.NotFound:
-                        throw new PokemonNotFoundException();
+                        throw new PokemonNotFound();
                     default:
-                        throw new PokemonRepositoryIsNotRespondingException();
+                        throw new PokemonRepositoryIsNotResponding();
                 }
             }
 
@@ -78,7 +78,7 @@ namespace Pokemon.Pokemon.Infrastructure
                     case HttpStatusCode.NotFound:
                         return false;
                     default:
-                        throw new PokemonRepositoryIsNotRespondingException();
+                        throw new PokemonRepositoryIsNotResponding();
                 }
             }
         }

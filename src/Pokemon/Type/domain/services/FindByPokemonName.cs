@@ -12,7 +12,7 @@ namespace Pokemon.Type.Domain {
             var types = _typeRepository.FindByPokemonName(pokemonName);
             if (types.Count == 0)
             {
-                throw new PokemonNotFoundException();
+                throw new PokemonNotFound();
             }
             return types;
         }

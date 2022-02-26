@@ -21,7 +21,7 @@
     ![postmanGetPokemonById](img/GetPokemonById-Postman.png)
 
     Exception Scenarios: <br>
-    1. Change the id of a pokemon for `9999` and the app will throw the exception (***PokemonNotFoundException***) that indicates that the pokemon does not exist! <br><br>
+    1. Change the id of a pokemon for `9999` and the app will throw the exception (***PokemonNotFound***) that indicates that the pokemon does not exist! <br><br>
 
     ![postmanPokemonNotFound](img/PokemonNotFound-Postman.png)
 

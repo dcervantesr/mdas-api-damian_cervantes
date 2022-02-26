@@ -38,7 +38,7 @@ namespace UsersTest.Domain
             var userName = UserNameMother.Random();
 
             //When - Then
-            Assert.Throws<UserAlreadyExistsException>(() => _userCreator.Execute(userId, userName));
+            Assert.Throws<UserAlreadyExists>(() => _userCreator.Execute(userId, userName));
         }
     }
 }

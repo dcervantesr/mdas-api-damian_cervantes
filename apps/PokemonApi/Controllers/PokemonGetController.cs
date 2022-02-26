@@ -31,11 +31,11 @@ namespace PokemonApi.Controllers
             }
             catch (Exception e)
             {
-                if (e is PokemonNotFoundException || (e.InnerException != null && e.InnerException is PokemonNotFoundException))
+                if (e is PokemonNotFound || (e.InnerException != null && e.InnerException is PokemonNotFound))
                 {
                     return NotFound(e.InnerException is null ? e.Message : e.InnerException.Message);
                 }
-                if (e is PokemonRepositoryIsNotRespondingException || (e.InnerException != null && e.InnerException is PokemonRepositoryIsNotRespondingException))
+                if (e is PokemonRepositoryIsNotResponding || (e.InnerException != null && e.InnerException is PokemonRepositoryIsNotResponding))
                     return Conflict(e.InnerException is null ? e.Message : e.InnerException.Message);
 
                 return NotFound("Oops, something has gone wrong. Try again later.");

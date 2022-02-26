@@ -21,7 +21,7 @@
     ![postmanClick1](img/clickSend.png)
 
     Exception Scenarios: <br>
-    1. If you click again and try to register the same user the app will throw an exception (***UserAlreadyExistsException***) that indicates that the user already exist! <br><br>
+    1. If you click again and try to register the same user the app will throw an exception (***UserAlreadyExists***) that indicates that the user already exist! <br><br>
 
     **4.2.** Add Pokemon Favorite
 
@@ -30,8 +30,8 @@
     ![postmanClick2](img/clickSend2.png)
 
     Exception Scenarios: <br>
-    1. If you click again and try to add the same pokemon favorite the app will throw an exception (***PokemonFavoriteAlreadyExistException***) that indicates that the pokemon have been already added! <br><br>    
-    2. If you click again and try to add a pokemon favorite with the a user that not exists then the app will throw an exception (***UserDoesNotExistException***) that indicates that the user haven't been created! <br><br>    
+    1. If you click again and try to add the same pokemon favorite the app will throw an exception (***PokemonFavoriteAlreadyExist***) that indicates that the pokemon have been already added! <br><br>    
+    2. If you click again and try to add a pokemon favorite with the a user that not exists then the app will throw an exception (***UserDoesNotExist***) that indicates that the user haven't been created! <br><br>    
 
 5. Run Tests:
 

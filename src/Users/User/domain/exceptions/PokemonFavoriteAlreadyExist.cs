@@ -1,8 +1,8 @@
 namespace Users.User.Domain
 {
-    public class PokemonFavoriteAlreadyExistException : Exception
+    public class PokemonFavoriteAlreadyExist : Exception
     {
-        public PokemonFavoriteAlreadyExistException() 
+        public PokemonFavoriteAlreadyExist() 
             : base("Pokemon already added to favorites")
         {
         }

@@ -13,7 +13,7 @@
         public virtual Pokemon Execute(PokemonId pokemonId)
         {
             if (!_pokemonRepository.Exists(pokemonId))
-                throw new PokemonNotFoundException();
+                throw new PokemonNotFound();
 
             return _pokemonRepository.Find(pokemonId);
         }

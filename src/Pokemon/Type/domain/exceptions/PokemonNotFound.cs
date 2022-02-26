@@ -2,9 +2,9 @@
 
 namespace Pokemon.Type.Domain
 {
-    public class PokemonNotFoundException : Exception
+    public class PokemonNotFound : Exception
     {
-        public PokemonNotFoundException()
+        public PokemonNotFound()
             : base("Pokemon not found")
         { }
     }

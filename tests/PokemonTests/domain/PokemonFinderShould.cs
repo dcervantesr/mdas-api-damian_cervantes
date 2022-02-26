@@ -34,7 +34,7 @@ namespace PokemonTests.Domain
             var _pokemonFinder = new PokemonFinder(pokemonRepository.Object);
 
             //When - Then
-            Assert.Throws<PokemonNotFoundException>(() => _pokemonFinder.Execute(PokemonIdMother.Random()));
+            Assert.Throws<PokemonNotFound>(() => _pokemonFinder.Execute(PokemonIdMother.Random()));
             pokemonRepository.Verify(_ => _.Exists(It.IsAny<PokemonId>()), Times.Once);
             pokemonRepository.Verify(_ => _.Find(It.IsAny<PokemonId>()), Times.Never);
         }

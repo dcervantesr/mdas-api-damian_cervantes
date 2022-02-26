@@ -20,7 +20,7 @@
         private void guardAgainstUserDoesNotExist(UserId userId)
         {
             if (!_userRepository.Exists(userId))
-                throw new UserDoesNotExistException();
+                throw new UserDoesNotExist();
         }
     }
 }

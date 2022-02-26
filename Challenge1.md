@@ -14,8 +14,8 @@
     `http://localhost:3080/api/v1/TypeGet/charizard` <br>
     
     Exception Scenarios: <br>
-    1. Change the name `charizard` for any other pokemon you can imagine, and if not exists the app will throw an exception (***PokemonNotFoundException***) that indicates that the pokemon does not exist! <br><br>
-    2. Test the Api without conection to internet to get the next controlled excepetion(***PokemonApiNotResponseException***) that indicates that the api is not responding!
+    1. Change the name `charizard` for any other pokemon you can imagine, and if not exists the app will throw an exception (***PokemonNotFound***) that indicates that the pokemon does not exist! <br><br>
+    2. Test the Api without conection to internet to get the next controlled excepetion(***TypeRepositoryIsNotResponding***) that indicates that the api is not responding!
 
     <br>
 

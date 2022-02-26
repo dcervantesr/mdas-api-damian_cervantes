@@ -14,5 +14,4 @@ public class PokemonFavorite
     }
 
     public PokemonId PokemonId => _pokemonId;
-
 }

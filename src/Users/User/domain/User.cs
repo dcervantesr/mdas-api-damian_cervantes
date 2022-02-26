@@ -29,7 +29,7 @@
 
         private void GuardAgainstPokemonFavoriteAlreadyExist(PokemonFavorite favorite) {
             if (_pokemonFavorites.Any(p => p.PokemonId == favorite.PokemonId))
-                throw new PokemonFavoriteAlreadyExistException();
+                throw new PokemonFavoriteAlreadyExist();
         }
     }
 }

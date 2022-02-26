@@ -34,9 +34,9 @@ namespace Pokemon.Type.Infrastructure
                 switch (e.StatusCode)
                 {
                     case HttpStatusCode.NotFound:
-                        throw new PokemonNotFoundException();
+                        throw new PokemonNotFound();
                     default:
-                        throw new TypeRepositoryIsNotRespondingException();
+                        throw new TypeRepositoryIsNotResponding();
                 }
             }
 

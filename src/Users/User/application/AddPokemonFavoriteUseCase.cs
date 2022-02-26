@@ -22,7 +22,7 @@ namespace Users.User.Application
             var pokemonId = new PokemonId(pokemonIdparam);
             var pokemonFavorite = PokemonFavorite.Create(pokemonId);
             _userAddPokemonFavorite.Execute(userId, pokemonFavorite);
-            _pokemonFavoritePublisher.Publish(pokemonFavorite.PokemonId.Value);
+            // _pokemonFavoritePublisher.Publish(pokemonFavorite.PokemonId.Value);
         }
     }
 }

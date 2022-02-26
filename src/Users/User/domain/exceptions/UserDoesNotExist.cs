@@ -1,8 +1,8 @@
 namespace Users.User.Domain
 {
-    public class UserDoesNotExistException : Exception
+    public class UserDoesNotExist : Exception
     {
-        public UserDoesNotExistException() 
+        public UserDoesNotExist() 
             : base("User does not exists")
         {
         }

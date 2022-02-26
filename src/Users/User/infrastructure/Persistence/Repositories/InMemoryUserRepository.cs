@@ -22,7 +22,7 @@ public class InMemoryUserRepository : IUserRepository
 
         if (user == null)
         {
-            throw new UserDoesNotExistException();
+            throw new UserDoesNotExist();
         }
 
         return user;

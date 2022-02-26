@@ -32,7 +32,7 @@ namespace TypeTest.Domain
             var _findByPokemonName = new FindByPokemonName(typeRepository.Object);
 
             //When - Then
-            Assert.Throws<PokemonNotFoundException>(() => _findByPokemonName.Execute(PokemonNameMother.Random()));
+            Assert.Throws<PokemonNotFound>(() => _findByPokemonName.Execute(PokemonNameMother.Random()));
         }
     }
 }

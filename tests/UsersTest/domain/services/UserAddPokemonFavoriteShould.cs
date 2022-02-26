@@ -40,7 +40,7 @@ namespace UsersTest.Domain
             var pokemonFavorite = PokemonFavoriteMother.Random();
 
             //When - Then
-            Assert.Throws<UserDoesNotExistException>(() => _userAddPokemonFavorite.Execute(userId, pokemonFavorite));
+            Assert.Throws<UserDoesNotExist>(() => _userAddPokemonFavorite.Execute(userId, pokemonFavorite));
             userRepository.Verify(v => v.Save(It.IsAny<User>()), Times.Never);
         }
     }

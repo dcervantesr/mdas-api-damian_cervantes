@@ -23,8 +23,8 @@ This project was created by **Group 2** for the course Software Design 2 with th
 
 ### Exceptions:
 
-* PokemonNotFoundException
-* PokemonApiNotResponseException
+* PokemonNotFound
+* TypeRepositoryIsNotResponding
 
 ---
 
@@ -50,9 +50,9 @@ This project was created by **Group 2** for the course Software Design 2 with th
 
 ### Exceptions:
 
-* PokemonFavoriteAlreadyExistException
-* UserDoesNotExistException
-* UserAlreadyExistsException
+* PokemonFavoriteAlreadyExist
+* UserDoesNotExist
+* UserAlreadyExists
 
 
 ---

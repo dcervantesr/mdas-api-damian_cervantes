@@ -1,8 +1,8 @@
 namespace Users.User.Domain
 {
-    public class UserAlreadyExistsException : Exception
+    public class UserAlreadyExists : Exception
     {
-        public UserAlreadyExistsException() 
+        public UserAlreadyExists() 
             : base("User already exists")
         {
         }
