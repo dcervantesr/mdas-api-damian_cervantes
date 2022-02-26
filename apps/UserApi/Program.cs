@@ -1,3 +1,4 @@
+using Users.Shared;
 using Users.User.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +8,7 @@ builder.Services.AddControllers();
 builder.Services.AddApplications();
 builder.Services.AddDomains();
 builder.Services.AddPersistences();
+builder.Services.AddShared();
 
 
 builder.Services.AddEndpointsApiExplorer();

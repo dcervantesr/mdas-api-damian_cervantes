@@ -1,4 +1,5 @@
 using Moq;
+using Users.Shared;
 using Users.User.Application;
 using Users.User.Domain;
 using Users.User.Infrastructure;
@@ -17,16 +18,21 @@ namespace UsersTest.Application
             var userId = UserIdMother.Random(userGuid);
             var user = UserMother.Random(userId, It.IsAny<UserName>());
             var pokemonId = PokemonIdMother.Random();
-            var userAddPokemonFavorite = new Mock<UserAddPokemonFavorite>(It.IsAny<IUserRepository>());
-            userAddPokemonFavorite.Setup(_ => _.Execute(It.IsAny<UserId>(), It.IsAny<PokemonFavorite>()));
-            var pokemonFavoritePublisher = new Mock<PokemonFavoritePublisher>();
-            var addPokemonFavoriteUseCase = new AddPokemonFavoriteUseCase(userAddPokemonFavorite.Object, pokemonFavoritePublisher.Object);
+            var userFinder = new Mock<UserFinder>(It.IsAny<IUserRepository>());
+            userFinder.Setup(x => x.Execute(userId)).Returns(user);
+            var userSaver = new Mock<UserSaver>(It.IsAny<IUserRepository>());
+            var eventPublisher = new Mock<EventPublisher>();
+            var addPokemonFavoriteUseCase = new AddPokemonFavoriteUseCase(
+                userSaver.Object,
+                eventPublisher.Object,
+                userFinder.Object
+            );
 
             //When
             addPokemonFavoriteUseCase.Execute(user.Id.Value, pokemonId.Value);
 
             //Then
-            userAddPokemonFavorite.Verify(v => v.Execute(It.IsAny<UserId>(), It.IsAny<PokemonFavorite>()));
+            userSaver.Verify(x => x.Execute(user));
         }
     }
 }

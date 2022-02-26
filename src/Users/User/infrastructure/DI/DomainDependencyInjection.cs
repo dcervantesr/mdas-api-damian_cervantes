@@ -9,8 +9,8 @@ public static class DomainDependencyInjection
     {
 
         services.AddTransient<UserCreator>();
-        services.AddTransient<UserAddPokemonFavorite>();
-
+        services.AddTransient<UserSaver>();
+        services.AddTransient<UserFinder>();
         return services;
     }
 }

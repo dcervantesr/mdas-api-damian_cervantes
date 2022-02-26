@@ -1,28 +1,32 @@
-﻿using Users.User.Domain;
+﻿using Users.Shared;
+using Users.User.Domain;
 
 namespace Users.User.Application
 {
     public class AddPokemonFavoriteUseCase
     {
-        private readonly UserAddPokemonFavorite _userAddPokemonFavorite;
-        private readonly PokemonFavoritePublisher _pokemonFavoritePublisher;
+        private readonly UserSaver _userSaver;
+        private readonly EventPublisher _eventPublisher;
+        private readonly UserFinder _userFinder;
 
         public AddPokemonFavoriteUseCase(
-            UserAddPokemonFavorite userAddPokemonFavorite,
-            PokemonFavoritePublisher pokemonFavoritePublisher
+            UserSaver userSaver,
+            EventPublisher eventPublisher,
+            UserFinder userFinder
         )
         {
-            _userAddPokemonFavorite = userAddPokemonFavorite;
-            _pokemonFavoritePublisher = pokemonFavoritePublisher;
+            _userSaver = userSaver;
+            _eventPublisher = eventPublisher;
+            _userFinder = userFinder;
         }
 
         public void Execute(Guid userIdparam, int pokemonIdparam)
         {
-            var userId = new UserId(userIdparam);
-            var pokemonId = new PokemonId(pokemonIdparam);
-            var pokemonFavorite = PokemonFavorite.Create(pokemonId);
-            _userAddPokemonFavorite.Execute(userId, pokemonFavorite);
-            // _pokemonFavoritePublisher.Publish(pokemonFavorite.PokemonId.Value);
+            var user = _userFinder.Execute(new UserId(userIdparam));
+            var pokemonFavorite = PokemonFavorite.Create(new PokemonId(pokemonIdparam));
+            user.AddPokemonFavorite(pokemonFavorite);
+            _eventPublisher.Publish(user.PullDomainEvents());
+            _userSaver.Execute(user);
         }
     }
 }

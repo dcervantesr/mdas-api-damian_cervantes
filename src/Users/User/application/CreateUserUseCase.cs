@@ -15,7 +15,6 @@ namespace Users.User.Application
         {
             UserId userId = new UserId(id);
             UserName userName = new UserName(name);
-
             _userCreator.Execute(userId, userName);
         }
 
