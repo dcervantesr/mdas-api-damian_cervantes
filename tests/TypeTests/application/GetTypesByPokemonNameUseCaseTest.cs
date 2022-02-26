@@ -15,7 +15,7 @@ namespace TypeTest.Application
             //Given
             var findByPokemonName = new Mock<FindByPokemonName>(It.IsAny<ITypeRepository>());
             var type = TypeMother.Random();
-            findByPokemonName.Setup(_ => _.Execute(It.IsAny<string>())).Returns(new List<Type>() { type });
+            findByPokemonName.Setup(_ => _.Execute(It.IsAny<string>())).Returns(new Types { type });
             var getTypesByPokemonNameUseCase = new GetTypesByPokemonNameUseCase(findByPokemonName.Object);
 
             //When

@@ -11,9 +11,9 @@ namespace Pokemon.Type.Infrastructure
             return type;
         }
 
-        public static List<Domain.Type> PokeApiTypeDtoListToTypesList(List<PokeApiTypeDto> pokeApiTypeDtos)
+        public static Types PokeApiTypeDtoListToTypesList(List<PokeApiTypeDto> pokeApiTypeDtos)
         {
-            List<Domain.Type> types = new List<Domain.Type>();
+            Types types = new Types();
             pokeApiTypeDtos.ForEach(pokeApiTypeDto => types.Add(PokeApiTypeDtoToType(pokeApiTypeDto)));
             return types;
         }

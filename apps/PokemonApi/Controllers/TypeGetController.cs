@@ -25,10 +25,7 @@ namespace PokemonApi.Controllers
             }
             try
             {
-                List<Pokemon.Type.Domain.Type> result =
-                    _getTypesByPokemonNameUseCase.Execute(pokemonName);
-
-                return Ok(result);
+                return Ok(_getTypesByPokemonNameUseCase.Execute(pokemonName));
             }
             catch (Exception e)
             {

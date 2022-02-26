@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Pokemon.Type.Domain;
+﻿using Pokemon.Type.Domain;
 
 namespace Pokemon.Type.Infrastructure
 {
@@ -10,12 +9,10 @@ namespace Pokemon.Type.Infrastructure
         {
             _pokeApiHttpClient = pokeApiHttpClient;
         }
-        public List<Domain.Type> FindByPokemonName(string pokemonName)
+        public Types FindByPokemonName(string pokemonName)
         {
             var pokemon = _pokeApiHttpClient.FindByPokemonNameAsync(pokemonName).Result;
-
-            List<Domain.Type> types = HttpAdapter.PokeApiTypeDtoListToTypesList(pokemon);
-            return types;
+            return HttpAdapter.PokeApiTypeDtoListToTypesList(pokemon);
         }
 
     }

@@ -12,7 +12,7 @@ namespace Pokemon.Type.Application
             _findByPokemonName = findByPokemonName;
         }
 
-        public List<Domain.Type> Execute(string pokemonName)
+        public Types Execute(string pokemonName)
         {
             return _findByPokemonName.Execute(pokemonName);
         }

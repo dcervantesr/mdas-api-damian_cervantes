@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace Pokemon.Type.Domain
+﻿namespace Pokemon.Type.Domain
 {
     public interface ITypeRepository
     {
-        public List<Type> FindByPokemonName(string pokemonName);
+        public Types FindByPokemonName(string pokemonName);
     }
 } 
