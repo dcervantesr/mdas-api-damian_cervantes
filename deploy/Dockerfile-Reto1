@@ -8,8 +8,10 @@ WORKDIR /src
 COPY ["Pokemon.sln", "./"]
 COPY ["apps/PokemonApi/PokemonApi.csproj", "apps/PokemonApi/"]
 COPY ["src/Pokemon/Pokemon.csproj", "src/Pokemon/"]
+COPY ["src/Shared/Shared.csproj", "src/Shared/"]
 COPY ["apps/PokemonConsole/PokemonConsole.csproj", "apps/PokemonConsole/"]
 
+RUN dotnet restore "src/Shared/Shared.csproj"
 RUN dotnet restore "src/Pokemon/Pokemon.csproj"
 RUN dotnet restore "apps/PokemonApi/PokemonApi.csproj"
 RUN dotnet restore "apps/PokemonConsole/PokemonConsole.csproj"

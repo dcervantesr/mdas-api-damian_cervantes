@@ -40,14 +40,13 @@ services:
 
   rabbitmq3:
     container_name: "mdas-api-g2.rabbitmq"
-    image: rabbitmq:3.8-management-alpine
+    image: rabbitmq:3.9-management
     environment:
         - RABBITMQ_DEFAULT_USER=netcoders
         - RABBITMQ_DEFAULT_PASS=netcoders
         - RABBITMQ_DEFAULT_VHOST=netcoders
     ports:
         - '5672:5672'
-        - '5671:5671'
         - '15672:15672'
     networks:
       - epokemonnet  

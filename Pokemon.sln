@@ -36,6 +36,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TypeTests", "tests\TypeTest
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PokemonTests", "tests\PokemonTests\PokemonTests.csproj", "{4CBB672C-6807-42E2-BD55-D172BB0DA1BD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "src\Shared\Shared.csproj", "{333472CC-CD66-4B81-ACB2-3F260C26D22D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -74,6 +76,10 @@ Global
 		{4CBB672C-6807-42E2-BD55-D172BB0DA1BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CBB672C-6807-42E2-BD55-D172BB0DA1BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CBB672C-6807-42E2-BD55-D172BB0DA1BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{333472CC-CD66-4B81-ACB2-3F260C26D22D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{333472CC-CD66-4B81-ACB2-3F260C26D22D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{333472CC-CD66-4B81-ACB2-3F260C26D22D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{333472CC-CD66-4B81-ACB2-3F260C26D22D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,6 +93,7 @@ Global
 		{D5D35E91-6105-4DBF-AD30-85B1E061258A} = {837A272A-DE36-40BF-82DB-2A25193C7DEB}
 		{CCF26125-AA7B-4FF0-A070-71A9B7169230} = {837A272A-DE36-40BF-82DB-2A25193C7DEB}
 		{4CBB672C-6807-42E2-BD55-D172BB0DA1BD} = {837A272A-DE36-40BF-82DB-2A25193C7DEB}
+		{333472CC-CD66-4B81-ACB2-3F260C26D22D} = {8A894576-24F2-4183-BEBC-39F8744FA7D5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {30CF126F-3A0E-4B7A-889B-4125CA8CFB17}

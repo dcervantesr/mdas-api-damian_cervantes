@@ -1,4 +1,4 @@
-namespace Users.Shared
+namespace Shared.MessageBroker
 {
     public abstract class DomainEvent
     {

@@ -4,10 +4,12 @@ WORKDIR /App
 # Copy csproj and restore as distinct layers
 COPY ["src/Pokemon/Pokemon.csproj", "src/Pokemon/"]
 COPY ["src/Users/Users.csproj", "src/Users/"]
+COPY ["src/Shared/Shared.csproj", "src/Shared/"]
 COPY ["tests/UsersTest/UsersTest.csproj", "tests/UsersTest/"]
 COPY ["tests/PokemonTests/PokemonTests.csproj", "tests/PokemonTests/"]
 COPY ["tests/TypeTests/TypeTests.csproj", "tests/TypeTests/"]
 
+RUN dotnet restore "src/Shared/Shared.csproj"
 RUN dotnet restore "src/Pokemon/Pokemon.csproj"
 RUN dotnet restore "src/Users/Users.csproj"
 RUN dotnet restore "tests/UsersTest/UsersTest.csproj"

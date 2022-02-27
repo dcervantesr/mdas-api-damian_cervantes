@@ -22,7 +22,7 @@ namespace PokemonTests.Infrastructure
             var httpClient = new HttpClient(mockHttp);
             var memoryPokemonRepository = new MemoryPokemonRepository();
             var pokemonAdapter = new PokemonAdapter(memoryPokemonRepository);
-            var pokeApiPokemonRepository = new PokeApiPokemonRepository(httpClient, pokemonAdapter);
+            var pokeApiPokemonRepository = new PokeApiPokemonRepository(httpClient, pokemonAdapter, memoryPokemonRepository);
             
             //When
             var pokemon = pokeApiPokemonRepository.Find(new PokemonId(pokeApiPokemonDto.Id));
@@ -42,7 +42,7 @@ namespace PokemonTests.Infrastructure
             var httpClient = new HttpClient(mockHttp);
             var memoryPokemonRepository = new MemoryPokemonRepository();
             var pokemonAdapter = new PokemonAdapter(memoryPokemonRepository);
-            var pokeApiPokemonRepository = new PokeApiPokemonRepository(httpClient, pokemonAdapter);
+            var pokeApiPokemonRepository = new PokeApiPokemonRepository(httpClient, pokemonAdapter, memoryPokemonRepository);
             
             //When
             var exists = pokeApiPokemonRepository.Exists(new PokemonId(pokeApiPokemonDto.Id));

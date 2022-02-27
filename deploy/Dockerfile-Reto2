@@ -8,8 +8,10 @@ WORKDIR /src
 COPY ["Pokemon.sln", "./"]
 COPY ["apps/UserApi/UserApi.csproj", "apps/UserApi/"]
 COPY ["src/Users/Users.csproj", "src/Users/"]
+COPY ["src/Shared/Shared.csproj", "src/Shared/"]
 COPY ["tests/UsersTest/UsersTest.csproj", "tests/UsersTest/"]
 
+RUN dotnet restore "src/Shared/Shared.csproj"
 RUN dotnet restore "src/Users/Users.csproj"
 RUN dotnet restore "apps/UserApi/UserApi.csproj"
 RUN dotnet restore "tests/UsersTest/UsersTest.csproj"

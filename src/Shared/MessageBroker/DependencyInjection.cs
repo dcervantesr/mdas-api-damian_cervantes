@@ -1,11 +1,11 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace Users.Shared;
+namespace Shared.MessageBroker;
 public static class SharedDependencyInjection
 {
     public static IServiceCollection AddShared(this IServiceCollection services)
     {
-        services.AddScoped<EventPublisher, RabbitMqEventPublisher>();
+        services.AddSingleton<EventPublisher, RabbitMqEventPublisher>();
         return services;
     }
 }

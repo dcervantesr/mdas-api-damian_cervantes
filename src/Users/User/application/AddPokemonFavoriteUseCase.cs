@@ -1,4 +1,4 @@
-﻿using Users.Shared;
+﻿using Shared.MessageBroker;
 using Users.User.Domain;
 
 namespace Users.User.Application

@@ -1,4 +1,4 @@
-using Users.Shared;
+using Shared.MessageBroker;
 using Users.User.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,7 +9,6 @@ builder.Services.AddApplications();
 builder.Services.AddDomains();
 builder.Services.AddPersistences();
 builder.Services.AddShared();
-
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

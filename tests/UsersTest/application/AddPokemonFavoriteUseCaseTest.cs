@@ -1,8 +1,7 @@
 using Moq;
-using Users.Shared;
+using Shared.MessageBroker;
 using Users.User.Application;
 using Users.User.Domain;
-using Users.User.Infrastructure;
 using UsersTest.Domain;
 using Xunit;
 
