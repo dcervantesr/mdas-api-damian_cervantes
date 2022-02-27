@@ -11,6 +11,9 @@ services:
     ports:
       - "3080:80" 
       - "3443:443"
+    depends_on:
+      - "epokemon.users"
+      - "rabbitmq"
     networks:
       - epokemonnet
 
@@ -38,16 +41,20 @@ services:
     networks:
       - epokemonnet
 
-  rabbitmq3:
-    container_name: "mdas-api-g2.rabbitmq"
+  rabbitmq:
+    container_name: "rabbitmq"
     image: rabbitmq:3.9-management
     environment:
         - RABBITMQ_DEFAULT_USER=netcoders
         - RABBITMQ_DEFAULT_PASS=netcoders
         - RABBITMQ_DEFAULT_VHOST=netcoders
     ports:
-        - '5672:5672'
-        - '15672:15672'
+        - "4369:4369"
+        - "5671:5671"
+        - "5672:5672"
+        - "25672:25672"
+        - "15671:15671"
+        - "15672:15672"
     networks:
       - epokemonnet  
 

@@ -10,7 +10,7 @@ public static class infrastructureDependencyInjection
         services.AddScoped<IPokemonRepository, PokeApiPokemonRepository>();
         services.AddSingleton<MemoryPokemonRepository>();
         services.AddScoped<PokemonAdapter>();
-        services.AddScoped<NotifyPokemonAddAsFavoriteSubscriber>();
+        services.AddHostedService<NotifyPokemonAddAsFavoriteSubscriber>();
         return services;
     }
 }

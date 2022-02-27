@@ -5,7 +5,7 @@ public static class SharedDependencyInjection
 {
     public static IServiceCollection AddShared(this IServiceCollection services)
     {
-        services.AddSingleton<EventPublisher, RabbitMqEventPublisher>();
+        services.AddSingleton(sp => RabbitHutch.CreateBus("amqp://netcoders:netcoders@localhost:5672/netcoders"));
         return services;
     }
 }

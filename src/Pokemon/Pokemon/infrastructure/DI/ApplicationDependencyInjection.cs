@@ -8,6 +8,7 @@ public static class ApplicationDependencyInjection
     public static IServiceCollection AddPokemonApplication(this IServiceCollection services)
     {
         services.AddTransient<GetPokemonByPokemonIdUseCase>();
+        services.AddTransient<PokemonAddAsFavoriteUseCase>();
         return services;
     }
 }

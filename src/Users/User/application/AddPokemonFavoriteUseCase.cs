@@ -6,17 +6,17 @@ namespace Users.User.Application
     public class AddPokemonFavoriteUseCase
     {
         private readonly UserSaver _userSaver;
-        private readonly EventPublisher _eventPublisher;
+        private readonly IBus _busControl;
         private readonly UserFinder _userFinder;
 
         public AddPokemonFavoriteUseCase(
             UserSaver userSaver,
-            EventPublisher eventPublisher,
+            IBus busControl,
             UserFinder userFinder
         )
         {
             _userSaver = userSaver;
-            _eventPublisher = eventPublisher;
+            _busControl = busControl;
             _userFinder = userFinder;
         }
 
@@ -25,7 +25,7 @@ namespace Users.User.Application
             var user = _userFinder.Execute(new UserId(userIdparam));
             var pokemonFavorite = PokemonFavorite.Create(new PokemonId(pokemonIdparam));
             user.AddPokemonFavorite(pokemonFavorite);
-            _eventPublisher.Publish(user.PullDomainEvents());
+            _busControl.Publish(Exchange.DomainEvents, Queue.Favorites, user.PullDomainEvents()).Wait();
             _userSaver.Execute(user);
         }
     }

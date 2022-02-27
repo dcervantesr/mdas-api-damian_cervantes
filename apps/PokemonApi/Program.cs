@@ -1,6 +1,7 @@
 using Microsoft.OpenApi.Models;
 using Pokemon.Pokemon.Infrastructure;
 using Pokemon.Type.Infrastructure;
+using Shared.MessageBroker;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,7 @@ builder.Services.AddHttpClient();
 builder.Services.AddTypeApplication();
 builder.Services.AddTypeDomain();
 builder.Services.AddTypeInfrastructure();
+builder.Services.AddShared();
 
 builder.Services.AddHttpClient<PokeApiHttpClient>();
 

@@ -19,7 +19,7 @@ namespace UsersTest.Application
             userFinder.Setup(x => x.Execute(It.IsAny<UserId>())).Returns(user);
             var userSaver = new Mock<UserSaver>(It.IsAny<IUserRepository>());
             userSaver.Setup(x => x.Execute(It.IsAny<User>()));
-            var eventPublisher = new Mock<EventPublisher>();
+            var eventPublisher = new Mock<IBus>();
             var addPokemonFavoriteUseCase = new AddPokemonFavoriteUseCase(
                 userSaver.Object,
                 eventPublisher.Object,
