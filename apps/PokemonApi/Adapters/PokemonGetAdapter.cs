@@ -6,7 +6,7 @@ namespace PokemonApi
     {
         public static GetPokemonDto PokemonToGetPokemonDto(Pokemon.Pokemon.Domain.Pokemon pokemon)
         {
-            var getPokemonDto = new GetPokemonDto
+            return new GetPokemonDto
             {
                 Id = pokemon.PokemonId.Value,
                 Name = pokemon.PokemonName.Value,
@@ -14,8 +14,6 @@ namespace PokemonApi
                 Weight = pokemon.PokemonWeight.Value,
                 FavoriteCounter = pokemon.PokemonFavoriteCounter.Value
             };
-
-            return getPokemonDto;
         }
     }
 }

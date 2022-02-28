@@ -7,8 +7,7 @@ namespace Pokemon.Type.Infrastructure
     {
         private static Domain.Type PokeApiTypeDtoToType(PokeApiTypeDto pokeApiTypeDto)
         {
-            Domain.Type type = Domain.Type.Create(new TypeName(pokeApiTypeDto.Name));
-            return type;
+            return Domain.Type.Create(new TypeName(pokeApiTypeDto.Name));
         }
 
         public static Types PokeApiTypeDtoListToTypesList(List<PokeApiTypeDto> pokeApiTypeDtos)
@@ -27,12 +26,11 @@ namespace Pokemon.Type.Infrastructure
 
         private static PokeApiTypeDto PokeApiTypesDtoToPokeApiTypeDto(PokeApiTypesDto pokeApiTypesDto)
         {
-            PokeApiTypeDto pokeApiTypeDto = new PokeApiTypeDto
+            return new PokeApiTypeDto
             {
                 Name = pokeApiTypesDto.Type.Name,
                 Url = pokeApiTypesDto.Type.Url
             };
-            return pokeApiTypeDto;
         }
     }
 }

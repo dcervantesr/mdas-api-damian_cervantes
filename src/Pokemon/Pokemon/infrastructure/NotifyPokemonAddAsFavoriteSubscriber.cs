@@ -27,7 +27,6 @@ namespace Pokemon.Pokemon.Infrastructure
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             _logger.LogInformation("NotifyPokemonAddAsFavoriteSubscriber is running.");
-
             await _busControl.Received<PokemonFavoriteAddedEvent>(
                 Exchange.DomainEvents,
                 Queue.Favorites,
@@ -41,7 +40,7 @@ namespace Pokemon.Pokemon.Infrastructure
 
         private void DidJob(PokemonFavoriteAddedEvent message)
         {
-            _logger.LogInformation(int.Parse(message.AggregateId).ToString());
+            _logger.LogInformation("NotifyPokemonAddAsFavoriteSubscriber received a message.");
             _pokemonAddAsFavoriteUseCase.Execute(int.Parse(message.AggregateId));
         }
     }

@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 namespace Pokemon.Type.Domain {
 
     public class FindByPokemonName {

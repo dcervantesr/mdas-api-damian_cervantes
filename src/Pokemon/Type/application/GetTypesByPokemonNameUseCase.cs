@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Pokemon.Type.Domain;
+﻿using Pokemon.Type.Domain;
 
 namespace Pokemon.Type.Application
 {
