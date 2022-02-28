@@ -1,5 +1,6 @@
 using System.Text;
 using System.Text.Json;
+using Microsoft.Extensions.Logging;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 
@@ -47,11 +48,11 @@ namespace Shared.MessageBroker
             await Task.Run(() => {
                 _channel.ExchangeDeclare(exchangeName, ExchangeType.Direct);
                 _channel.QueueDeclare(queue, true, false, false, null);
-                _channel.QueueBind(queue, exchangeName, @event.Type(), null);
+                _channel.QueueBind(queue, exchangeName, @event.Type, null);
                 IBasicProperties properties = _channel.CreateBasicProperties();
-                properties.Type = @event.Type();
-                byte[] output = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(@event.Metadata));
-                _channel.BasicPublish(exchangeName, @event.Type(), properties, output);
+                properties.Type = @event.Type;
+                byte[] output = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(@event));
+                _channel.BasicPublish(exchangeName, @event.Type, properties, output);
             });
         }
     }

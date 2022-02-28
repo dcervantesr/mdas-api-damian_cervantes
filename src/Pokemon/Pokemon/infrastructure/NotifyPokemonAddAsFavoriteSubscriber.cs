@@ -41,8 +41,8 @@ namespace Pokemon.Pokemon.Infrastructure
 
         private void DidJob(PokemonFavoriteAddedEvent message)
         {
-            _logger.LogInformation("NotifyPokemonAddAsFavoriteSubscriber received a message.");
-            _pokemonAddAsFavoriteUseCase.Execute(int.Parse(message.Metadata.AggregateId));
+            _logger.LogInformation(int.Parse(message.AggregateId).ToString());
+            _pokemonAddAsFavoriteUseCase.Execute(int.Parse(message.AggregateId));
         }
     }
 }

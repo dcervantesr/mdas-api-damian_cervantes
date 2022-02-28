@@ -1,3 +1,4 @@
+using System;
 using Pokemon.Pokemon.Domain;
 
 namespace Pokemon.Pokemon.Application
@@ -19,7 +20,9 @@ namespace Pokemon.Pokemon.Application
         public void Execute(int pokemonId)
         {
             var pokemon = _pokemonFinder.Execute(new PokemonId(pokemonId));
+            Console.WriteLine($"Pokemon {pokemon.PokemonFavoriteCounter} favorites before.");
             pokemon.IncrementFavoriteCounter();
+            Console.WriteLine($"Pokemon {pokemon.PokemonFavoriteCounter} favorites after.");
             _pokemonSaver.Execute(pokemon);
         }
     }

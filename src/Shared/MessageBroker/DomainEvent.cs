@@ -2,15 +2,18 @@ namespace Shared.MessageBroker
 {
     public abstract class DomainEvent
     {
-        private string aggregateId;
-        public DomainEventMetadata Metadata;
+        public string AggregateId { get; }
+        public DomainEventMetadata? Metadata { get; }
+        public string Type { get; }
 
-        public DomainEvent(string aggregateId)
+        public DomainEvent(
+            string aggregateId, 
+            DomainEventMetadata? metadata, 
+            string type)
         {
-            this.aggregateId = aggregateId;
-            this.Metadata = new DomainEventMetadata(aggregateId);
+            this.AggregateId = aggregateId;
+            this.Metadata = metadata;
+            this.Type = type;
         }
-
-        abstract public string Type();
     }
 }

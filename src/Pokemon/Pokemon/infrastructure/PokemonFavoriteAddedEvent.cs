@@ -4,10 +4,9 @@ namespace Pokemon.Pokemon.Infrastructure
 {
     public class PokemonFavoriteAddedEvent : DomainEvent
     {
-        public PokemonFavoriteAddedEvent(string aggregateId) : base(aggregateId)
+        public PokemonFavoriteAddedEvent(string aggregateId)
+            : base(aggregateId, null, "pokemonfavorite.added")
         {
         }
-
-        public override string Type() => "pokemonfavorite.added";
     }
 }

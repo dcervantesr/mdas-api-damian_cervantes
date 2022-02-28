@@ -11,6 +11,7 @@ services:
     ports:
       - "3080:80" 
       - "3443:443"
+    restart: always
     depends_on:
       - "epokemon.users"
       - "rabbitmq"
