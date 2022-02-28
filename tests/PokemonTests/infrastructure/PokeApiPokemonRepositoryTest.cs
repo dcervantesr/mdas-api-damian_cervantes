@@ -1,4 +1,5 @@
-﻿using Pokemon.Pokemon.Domain;
+﻿using Microsoft.Extensions.Caching.Memory;
+using Pokemon.Pokemon.Domain;
 using Pokemon.Pokemon.Infrastructure;
 using PokemonTests.Infrastructure.Dto;
 using RichardSzalay.MockHttp;
@@ -20,7 +21,7 @@ namespace PokemonTests.Infrastructure
             var response = JsonSerializer.Serialize(pokeApiPokemonDto);
             mockHttp.When($"{pokemonUrl}/{pokeApiPokemonDto.Id}").Respond("application/json", response);
             var httpClient = new HttpClient(mockHttp);
-            var memoryPokemonRepository = new MemoryPokemonRepository();
+            var memoryPokemonRepository = new MemoryPokemonRepository(new MemoryCache(new MemoryCacheOptions()));
             var pokemonAdapter = new PokemonAdapter(memoryPokemonRepository);
             var pokeApiPokemonRepository = new PokeApiPokemonRepository(httpClient, pokemonAdapter, memoryPokemonRepository);
             
@@ -40,7 +41,7 @@ namespace PokemonTests.Infrastructure
             var response = JsonSerializer.Serialize(pokeApiPokemonDto);
             mockHttp.When($"{pokemonUrl}/{pokeApiPokemonDto.Id}").Respond("application/json", response);
             var httpClient = new HttpClient(mockHttp);
-            var memoryPokemonRepository = new MemoryPokemonRepository();
+            var memoryPokemonRepository = new MemoryPokemonRepository(new MemoryCache(new MemoryCacheOptions()));
             var pokemonAdapter = new PokemonAdapter(memoryPokemonRepository);
             var pokeApiPokemonRepository = new PokeApiPokemonRepository(httpClient, pokemonAdapter, memoryPokemonRepository);
             

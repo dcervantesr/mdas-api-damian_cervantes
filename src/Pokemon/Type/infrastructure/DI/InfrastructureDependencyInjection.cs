@@ -8,7 +8,6 @@ public static class InfrastructureDependencyInjection
     public static IServiceCollection AddTypeInfrastructure(this IServiceCollection services)
     {
         services.AddScoped<ITypeRepository, PokeApiTypeRepository>();
-
         return services;
     }
 }

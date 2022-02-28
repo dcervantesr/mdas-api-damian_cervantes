@@ -1,24 +1,32 @@
-using System.Collections.Generic;
+using System;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace Pokemon.Pokemon.Infrastructure
 {
     public class MemoryPokemonRepository
     {
-        private Dictionary<int,int> _pokemons = new Dictionary<int, int>();
+        private readonly IMemoryCache _cache;
 
-        public void Save(int pokemonId, int counter)
+        public MemoryPokemonRepository(IMemoryCache cache)
         {
-            _pokemons.Add(pokemonId, counter);
+            _cache = cache;
         }
 
-        public int GetFavoriteCounter(int pokemonId)
+        public int Get(int pokemonId)
         {
-            return _pokemons[pokemonId];
+            var num = _cache.GetOrCreate($"POKEMON_{pokemonId}", entry =>
+            {
+                entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(5);
+                return 0;
+            });
+            Console.WriteLine($"Pokemon {pokemonId} favorite counter: {num}");
+            return num;
         }
 
-        public bool Exists(int pokemonId)
+        public void Save(int pokemonId, int favorites)
         {
-            return _pokemons.ContainsKey(pokemonId);
+            Console.WriteLine($"Saving pokemon {pokemonId} with {favorites} favorites");
+            _cache.Set($"POKEMON_{pokemonId}", favorites);
         }
     }
 }

@@ -24,14 +24,7 @@ namespace Pokemon.Pokemon.Infrastructure
 
         private PokemonFavoriteCounter LoadPokemonFavoriteCounter(int pokemonId)
         {
-            saveIfDoesNotExist(pokemonId);
-            return new PokemonFavoriteCounter(_memoryPokemonRepository.GetFavoriteCounter(pokemonId));
-        }
-
-        private void saveIfDoesNotExist(int pokemonId)
-        {
-            if (!_memoryPokemonRepository.Exists(pokemonId))
-                _memoryPokemonRepository.Save(pokemonId, 0);
+            return new PokemonFavoriteCounter(_memoryPokemonRepository.Get(pokemonId));
         }
     }
 }

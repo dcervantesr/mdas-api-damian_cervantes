@@ -1,5 +1,4 @@
-﻿using Pokemon.Pokemon.Domain;
-using Pokemon.Pokemon.Infrastructure;
+﻿using Pokemon.Pokemon.Infrastructure;
 
 namespace PokemonApi
 {
@@ -12,7 +11,8 @@ namespace PokemonApi
                 Id = pokemon.PokemonId.Value,
                 Name = pokemon.PokemonName.Value,
                 Height = pokemon.PokemonHeight.Value,
-                Weight = pokemon.PokemonWeight.Value
+                Weight = pokemon.PokemonWeight.Value,
+                FavoriteCounter = pokemon.PokemonFavoriteCounter.Value
             };
 
             return getPokemonDto;
