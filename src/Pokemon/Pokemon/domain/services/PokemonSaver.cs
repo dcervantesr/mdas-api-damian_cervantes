@@ -9,7 +9,7 @@ namespace Pokemon.Pokemon.Domain
             _pokemonRepository = pokemonRepository;
         }
 
-        public void Execute(Pokemon pokemon)
+        public virtual void Execute(Pokemon pokemon)
         {
             _pokemonRepository.Save(pokemon);
         }

@@ -72,6 +72,7 @@ Further instructions in each challenge:
 * #### [Challenge #1](Challenge1.md)
 * #### [Challenge #2](Challenge2.md)
 * #### [Challenge #3](Challenge3.md)
+* #### [Individual Challenge](ChallengeInd.md)
 
 ---
 
