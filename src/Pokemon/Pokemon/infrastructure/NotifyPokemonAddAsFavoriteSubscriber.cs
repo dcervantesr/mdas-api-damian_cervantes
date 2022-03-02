@@ -11,17 +11,17 @@ namespace Pokemon.Pokemon.Infrastructure
     {
         private readonly ILogger<NotifyPokemonAddAsFavoriteSubscriber> _logger;
         private readonly IBus _busControl;
-        private readonly PokemonAddAsFavoriteUseCase _pokemonAddAsFavoriteUseCase;
+        private readonly AddPokemonAsFavoriteUseCase _addPokemonAsFavoriteUseCase;
 
         public NotifyPokemonAddAsFavoriteSubscriber(
             ILogger<NotifyPokemonAddAsFavoriteSubscriber> logger,
             IBus busControl,
-            PokemonAddAsFavoriteUseCase pokemonAddAsFavoriteUseCase
+            AddPokemonAsFavoriteUseCase pokemonAddAsFavoriteUseCase
         )
         {
             _logger = logger;
             _busControl = busControl;
-            _pokemonAddAsFavoriteUseCase = pokemonAddAsFavoriteUseCase;
+            _addPokemonAsFavoriteUseCase = pokemonAddAsFavoriteUseCase;
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -41,7 +41,7 @@ namespace Pokemon.Pokemon.Infrastructure
         private void DidJob(PokemonFavoriteAddedEvent message)
         {
             _logger.LogInformation("NotifyPokemonAddAsFavoriteSubscriber received a message.");
-            _pokemonAddAsFavoriteUseCase.Execute(int.Parse(message.AggregateId));
+            _addPokemonAsFavoriteUseCase.Execute(int.Parse(message.AggregateId));
         }
     }
 }

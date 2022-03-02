@@ -6,7 +6,7 @@ using Xunit;
 
 namespace PokemonTests.Application
 {
-    public class PokemonAddAsFavoriteUseCaseTest
+    public class AddPokemonAsFavoriteUseCaseTest
     {
         [Fact]
         public void Should_Invoke_PokemonSaver()
@@ -17,10 +17,10 @@ namespace PokemonTests.Application
             pokemonFinder.Setup(_ => _.Execute(It.IsAny<PokemonId>())).Returns(pokemon);
             var pokemonSaver = new Mock<PokemonSaver>(It.IsAny<IPokemonRepository>());
             pokemonSaver.Setup(_ => _.Execute(It.IsAny<Pokemon.Pokemon.Domain.Pokemon>()));
-            var pokemonAddAsFavoriteUseCase = new PokemonAddAsFavoriteUseCase(pokemonFinder.Object, pokemonSaver.Object);
+            var addPokemonAsFavoriteUseCase = new AddPokemonAsFavoriteUseCase(pokemonFinder.Object, pokemonSaver.Object);
 
             //When
-            pokemonAddAsFavoriteUseCase.Execute(Faker.RandomNumber.Next(1,100));
+            addPokemonAsFavoriteUseCase.Execute(Faker.RandomNumber.Next(1,100));
 
             //Then
             pokemonSaver.Verify(_ => _.Execute(It.IsAny<Pokemon.Pokemon.Domain.Pokemon>()), Times.Once);

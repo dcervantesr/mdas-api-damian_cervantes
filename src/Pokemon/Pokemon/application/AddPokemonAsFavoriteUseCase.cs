@@ -2,12 +2,12 @@ using Pokemon.Pokemon.Domain;
 
 namespace Pokemon.Pokemon.Application
 {
-    public class PokemonAddAsFavoriteUseCase
+    public class AddPokemonAsFavoriteUseCase
     {
         private readonly PokemonFinder _pokemonFinder;
         private readonly PokemonSaver _pokemonSaver;
 
-        public PokemonAddAsFavoriteUseCase(
+        public AddPokemonAsFavoriteUseCase(
             PokemonFinder pokemonFinder,
             PokemonSaver pokemonSaver
         )
