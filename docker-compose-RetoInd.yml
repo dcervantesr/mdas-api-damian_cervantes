@@ -11,10 +11,9 @@ services:
     ports:
       - "3080:80" 
       - "3443:443"
-    restart: always
+    restart: on-failure  
     depends_on:
-      - "epokemon.users"
-      - "rabbitmq"
+      - rabbitmq
     networks:
       - epokemonnet
 
@@ -56,6 +55,11 @@ services:
         - "25672:25672"
         - "15671:15671"
         - "15672:15672"
+    healthcheck:
+        test: ["CMD", "curl", "-f", "http://netcoders:netcoders@localhost:15672"]
+        interval: 30s
+        timeout: 10s
+        retries: 5
     networks:
       - epokemonnet  
 
